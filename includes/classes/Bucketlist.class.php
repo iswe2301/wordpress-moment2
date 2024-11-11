@@ -48,6 +48,18 @@ class Bucketlist {
         return $posts; // Returnera arrayen med poster
     }
 
+     // Metod för att ta bort en post från bucketlistan
+     public function deletePost(int $id) : bool {
+
+        // Använd prepared statements
+        $stmt = $this->db->prepare("DELETE FROM bucketlist WHERE id = ?");
+        $stmt->bind_param("i", $id);
+
+        $result = $stmt->execute(); // Kör prepared statement
+        $stmt->close(); // Stäng prepared statement
+        return $result; // Returnera true om det lyckas, annars false
+    }
+
     // Set-metod för att sätta namn
     public function setName(string $name) : bool {
         // Kontrollera att namnet inte är tomt och inte längre än 64 tecken
