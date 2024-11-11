@@ -48,8 +48,8 @@ class Bucketlist {
         return $posts; // Returnera arrayen med poster
     }
 
-     // Metod för att ta bort en post från bucketlistan
-     public function deletePost(int $id) : bool {
+    // Metod för att ta bort en post från bucketlistan
+    public function deletePost(int $id) : bool {
 
         // Använd prepared statements
         $stmt = $this->db->prepare("DELETE FROM bucketlist WHERE id = ?");
@@ -60,21 +60,37 @@ class Bucketlist {
         return $result; // Returnera true om det lyckas, annars false
     }
 
-        // Metod för att uppdatera en post i bucketlistan
-        public function updatePost(int $id, string $name, string $description, int $priority) : bool {
+    // Metod för att uppdatera en post i bucketlistan
+    public function updatePost(int $id, string $name, string $description, int $priority) : bool {
 
-            if(!$this->setName($name)) return false; // Kontrollera att namnet är giltigt
-            if(!$this->setDescription($description)) return false; // Kontrollera att beskrivningen är giltig
-            if(!$this->setPriority($priority)) return false; // Kontrollera att prioritet är giltig
+        if(!$this->setName($name)) return false; // Kontrollera att namnet är giltigt
+        if(!$this->setDescription($description)) return false; // Kontrollera att beskrivningen är giltig
+        if(!$this->setPriority($priority)) return false; // Kontrollera att prioritet är giltig
     
-            // Använd prepared statements
-            $stmt = $this->db->prepare("UPDATE bucketlist SET name = ?, description = ?, priority = ? WHERE id = ?");
-            $stmt->bind_param("ssii", $this->name, $this->description, $this->priority, $id);
+        // Använd prepared statements
+        $stmt = $this->db->prepare("UPDATE bucketlist SET name = ?, description = ?, priority = ? WHERE id = ?");
+        $stmt->bind_param("ssii", $this->name, $this->description, $this->priority, $id);
     
-            $result = $stmt->execute(); // Kör prepared statement
-            $stmt->close(); // Stäng prepared statement
-            return $result; // Returnera true om det lyckas, annars false
-        }
+        $result = $stmt->execute(); // Kör prepared statement
+        $stmt->close(); // Stäng prepared statement
+        return $result; // Returnera true om det lyckas, annars false
+    }
+
+    // Metod för att hämta en specifik post från bucketlistan
+    public function getPostById(int $id) : ?array {
+    
+        // Använd prepared statements
+        $stmt = $this->db->prepare("SELECT * FROM bucketlist WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+    
+        $result = $stmt->get_result(); // Hämta resultatet från frågan
+        $post = $result->fetch_assoc(); // Hämta posten som en associativ array
+    
+        $stmt->close(); // Stäng prepared statement
+    
+        return $post ?: null; // Returnera posten eller null om den inte finns
+    }
 
     // Set-metod för att sätta namn
     public function setName(string $name) : bool {
