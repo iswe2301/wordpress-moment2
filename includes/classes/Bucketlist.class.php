@@ -26,10 +26,26 @@ class Bucketlist {
 
        // Använd prepared statements för att undvika SQL-injections
        $stmt = $this->db->prepare("INSERT INTO bucketlist (name, description, priority) VALUES (?, ?, ?)");
-       $stmt->bind_param("ssi", $name, $description, $priority);
+       $stmt->bind_param("ssi", $this->name, $this->description, $this->priority);
 
-       // Returnera true om det lyckas, annars false
-       return $stmt->execute(); 
+       $result = $stmt->execute(); // Kör prepared statement
+       $stmt->close(); // Stäng prepared statement
+       return $result; // Returnera true om det lyckas, annars false
+    }
+
+    // Metod för att hämta alla poster från bucketlistan
+    public function getPosts() : array {
+        // SQL-fråga för att hämta alla poster sorterade efter prioritet
+        $sql = "SELECT * FROM bucketlist ORDER BY priority ASC";
+        $result = $this->db->query($sql); // Kör SQL-frågan
+
+        // Kontrollera om frågan misslyckas
+        if (!$result) {
+            return []; // Returnera tom array
+        }
+
+        $posts = $result->fetch_all(MYSQLI_ASSOC); // Hämta alla rader som en associativ array
+        return $posts; // Returnera arrayen med poster
     }
 
     // Set-metod för att sätta namn
