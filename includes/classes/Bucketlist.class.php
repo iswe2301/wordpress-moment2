@@ -60,6 +60,22 @@ class Bucketlist {
         return $result; // Returnera true om det lyckas, annars false
     }
 
+        // Metod för att uppdatera en post i bucketlistan
+        public function updatePost(int $id, string $name, string $description, int $priority) : bool {
+
+            if(!$this->setName($name)) return false; // Kontrollera att namnet är giltigt
+            if(!$this->setDescription($description)) return false; // Kontrollera att beskrivningen är giltig
+            if(!$this->setPriority($priority)) return false; // Kontrollera att prioritet är giltig
+    
+            // Använd prepared statements
+            $stmt = $this->db->prepare("UPDATE bucketlist SET name = ?, description = ?, priority = ? WHERE id = ?");
+            $stmt->bind_param("ssii", $this->name, $this->description, $this->priority, $id);
+    
+            $result = $stmt->execute(); // Kör prepared statement
+            $stmt->close(); // Stäng prepared statement
+            return $result; // Returnera true om det lyckas, annars false
+        }
+
     // Set-metod för att sätta namn
     public function setName(string $name) : bool {
         // Kontrollera att namnet inte är tomt och inte längre än 64 tecken
