@@ -75,3 +75,4 @@ $pages = array(
             </div>
         </header>
         <main>
+            <div class="container">
