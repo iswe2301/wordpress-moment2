@@ -128,5 +128,10 @@ class Bucketlist {
             return false; // Returnera false om det misslyckas
         }
     }
+
+    // Destruktor för att stänga anslutningen till databasen
+    function __destruct() {
+        $this->db->close(); // Stäng anslutningen
+    }
 }
 
