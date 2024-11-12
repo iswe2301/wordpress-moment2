@@ -30,7 +30,7 @@ $pages = array(
     <!-- Overlay som aktiveras vid mobilmeny -->
     <div id="overlay" class="hidden"></div>
     <header>
-            <h1>MYBUCKETLiST</h1>
+            <h1><a href="index.php">MYBUCKETLiST</a></h1>
             <nav id="menu">
                 <ul>
                 <?php

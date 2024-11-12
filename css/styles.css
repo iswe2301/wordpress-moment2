@@ -72,8 +72,10 @@ header {
 }
 
 /* Styling för h1 inom header */
-header h1 {
+header h1 a {
     margin: 0 !important;
+    color: white;
+    text-decoration: none;
 }
 
 /* Meny/navigering för datorvy, fixerad position */
