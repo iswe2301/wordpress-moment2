@@ -1,11 +1,20 @@
 <!-- Sätt titel för sidan samt inkludera header -->
 <?php $title = "Butcketlist"; ?>
 <?php include 'includes/header.php'; ?>
-
-    <h2>Skapa ny post</h2>
     <?php
     // Skapa en instans av Bucketlist-klassen
     $bucketlist = new Bucketlist();
+
+    // Kontrollera om en post ska raderas
+    if (isset($_GET['deleteid'])) {
+        $deleteid = $_GET['deleteid'];
+        // Anropa metod för att radera posten
+        if ($bucketlist->deletePost($deleteid)) {
+            echo "<p class='success'>Posten har raderats!</p>";
+        } else {
+            echo "<p class='error'>Något gick fel vid radering av posten...</p>";
+        }
+    }
 
     // Defaultvärden för formuläret
     $name = "";
@@ -63,6 +72,7 @@
         }
     }
     ?>
+    <h2>Skapa ny post</h2>
     <!-- Formulär för att lägga till post -->
     <form action="bucketlist.php" method="POST">
         <label for="name">Namn</label>
