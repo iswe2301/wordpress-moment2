@@ -1,0 +1,236 @@
+/* Tar bort standardmarginaler och padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Grundläggande styling för body */
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4ead5;
+    color: #333;
+    font-size: 1.2em;
+}
+
+/* Styling för huvudinnehåll */
+main {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    min-height: 100vh;
+    height: 100%;
+    margin: 100px 20% 20px 20%;
+    padding: 20px;
+}
+
+/* Styling för rubriker och brödtext */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin: 1rem 0 0.5rem 0;
+}
+
+p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+/* Styling för footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ff9b28;
+    color: #f4ead5;
+    font-size: 0.9em;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.50);
+}
+
+/* Styling och position för header */
+header {
+    background-color: #ff9b28;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    height: 80px;
+    z-index: 3;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.60);
+}
+
+/* Styling för h1 inom header */
+header h1 {
+    margin: 0 !important;
+}
+
+/* Meny/navigering för datorvy, fixerad position */
+nav {
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+    z-index: 2;
+}
+
+/* Visar lista i flex row */
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    list-style-type: none;
+    padding: 0 2rem;
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+nav ul li a:hover, .active {
+    color: #f4ead5;
+    text-decoration: underline;
+    text-decoration-color: #f4ead5;
+    text-underline-offset: 0.3rem;
+}
+
+/* Döljer mobilmeny initialt */
+.menu-container {
+    display: none;
+}
+
+/* Styling för enheter mindre än 768px bredd */
+@media (max-width: 768px) {
+
+    main {
+        margin: 100px 10px 20px 10px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Döljer ordinarie nav-meny */
+    #menu {
+        display: none;
+    }
+
+    /* Container för mobilmenyn */
+    .menu-container {
+        display: flex;
+        text-align: center;
+        width: 6rem;
+        z-index: 2;
+    }
+
+    /* Styling för mobilmeny */
+    .mobile-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 90vw;
+        height: 90vw;
+        border-radius: 50%;
+        background-color: #ff9b28;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.5s ease;
+        z-index: 1;
+        box-shadow: 0 -8px 12px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Styling när klassen .show läggs till */
+    .mobile-menu.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Styling för menyknappen */
+    .menu-toggle {
+        background-color: #ff9b28;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 2rem;
+        z-index: 3;
+    }
+
+    .menu-toggle:hover {
+        background-color: #ff9b28;
+    }
+
+    /* Styling för ikonerna inom .menu-toggle */
+    .menu-toggle i {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translate(-50%, -50%) rotate(0deg);
+        transform-origin: 50% 50%;
+    }
+
+    /* Specifika stilar för .fa-bars */
+    .menu-toggle .fa-bars {
+        opacity: 1;
+    }
+
+    /* Specifika stilar för .fa-xmark */
+    .menu-toggle .fa-xmark {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+
+    /* Mobilmeny-länkar */
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 1.5rem 0;
+    }
+
+    nav ul li a {
+        font-size: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.2rem;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        color: white;
+    }
+
+    nav ul li a:active, nav ul li a:hover, .active {
+        color: #f4ead5;
+    }
+
+    /* Döljer overlay initialt */
+    #overlay.hidden {
+        display: none;
+    }
+
+    /* Klass för opacitet när mobilmeny öppnas (JS) */
+    #overlay.opacity {
+        display: block;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
