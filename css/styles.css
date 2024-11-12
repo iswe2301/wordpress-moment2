@@ -112,6 +112,135 @@ nav ul li a:hover, .active {
     display: none;
 }
 
+/* Styling för formulär */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Styling för input och select */
+input,
+select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Styling för textarea */
+textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Styling för labels */
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    width: 10rem;
+    color: #ffffff;
+    background-color: #ff9b28;
+    border: none;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button i {
+    margin-left: 0.5rem;
+}
+
+button:hover {
+    background-color: #ff7f00;
+}
+
+/* Tooltip-styling */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 0.2rem;
+    vertical-align: middle; /* Centrerar tooltipen vertikalt */
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden; /* Döljer tooltip-text initialt */
+    width: 180px;
+    background-color: #333333b7;
+    color: #fff;
+    font-weight: 300;
+    text-align: center;
+    border-radius: 5px;
+    padding: 20px 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Positionerar tooltip ovanför ikonen */
+    left: 50%; /* Centrerar tooltip-text horisontellt */
+    transform: translateX(-50%); 
+    opacity: 0;
+    transition: opacity 0.3s; /* Gör tooltipen synlig med en fade-effekt */
+    font-size: 0.8rem;
+}
+
+/* Pil för tooltip */
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333333b7 transparent transparent transparent; /* Färgar pilen */
+}
+
+/* Visar tooltip-text vid hovring */
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Styling för success och error-meddelanen */
+.success, .error {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
 /* Styling för enheter mindre än 768px bredd */
 @media (max-width: 768px) {
 
@@ -121,6 +250,10 @@ nav ul li a:hover, .active {
 
     header h1 {
         font-size: 1.5rem;
+    }
+
+    button {
+        width: 100%;
     }
 
     /* Döljer ordinarie nav-meny */
