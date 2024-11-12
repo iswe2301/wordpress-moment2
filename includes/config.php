@@ -1,6 +1,8 @@
 <?php
-// Starta sessionen
+// Starta sessionen om den inte redan är startad
+if (session_status() == PHP_SESSION_NONE) {
 session_start();
+}
 
 // Kontrollera utvecklingsläge
 $devMode = true;
@@ -18,10 +20,10 @@ spl_autoload_register(function ($class_name) {
 
 if($devMode) {
     // Lokala databasinställningar
-    define('DBHOST', 'localhost');
-    define('DBUSER', 'bucketdb');
-    define('DBPASS', 'password');
-    define('DBDATABASE', 'bucketdb');
+    if(!defined('DBHOST')) define('DBHOST', 'localhost');
+    if(!defined('DBUSER')) define('DBUSER', 'bucketdb');
+    if(!defined('DBPASS')) define('DBPASS', 'password');
+    if(!defined('DBDATABASE')) define('DBDATABASE', 'bucketdb');
 } else {
     // Publicerade databasinställningar
 }
