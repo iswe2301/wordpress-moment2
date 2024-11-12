@@ -164,7 +164,8 @@ label {
 button {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
-    width: 10rem;
+    width: 100%;
+    max-width: 13.5rem;
     color: #ffffff;
     background-color: #ff9b28;
     border: none;
@@ -180,6 +181,38 @@ button i, a i {
 
 button:hover {
     background-color: #ff7f00;
+}
+
+/* Breadcrumb styling */
+.breadcrumb-nav {
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+}
+
+.breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+.breadcrumb-item {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #6c757d;
+}
+
+.breadcrumb-item a {
+    color: orange;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.breadcrumb-item a:hover {
+    color: #ff7f00;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
 }
 
 /* Tooltip-styling */
@@ -287,6 +320,10 @@ button:hover {
     margin: 1rem 0;
 }
 
+.post-info {
+    max-width: 350px;
+}
+
 /* Styling för ändra/radera knappar */
 .post .actions {
     display: flex;
@@ -324,7 +361,7 @@ button:hover {
 @media (max-width: 768px) {
 
     main {
-        margin: 100px 10px 20px 10px;
+        margin: 100px 5px 20px 5px;
     }
 
     header h1 {
@@ -338,6 +375,11 @@ button:hover {
     .post {
         flex-direction: column;
         align-items: normal;
+        padding: 0 0 1.5rem 0;
+    }
+
+    .post-info {
+        max-width: 100%;
     }
 
     .post .actions {
