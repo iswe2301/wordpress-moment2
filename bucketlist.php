@@ -92,5 +92,30 @@
 
         <button type="submit" name="submit">Lägg till <i class="fas fa-plus"></i></button>
     </form>
-            
+
+    <h2>Min bucketlist</h2>
+        <div class="post-container">
+        <?php
+        // Hämta alla poster från databasen
+        $post_list = $bucketlist->getPosts();
+        // Loopa igenom alla poster
+        foreach ($post_list as $post) {
+            ?>
+            <!-- Skriv ut posterna i sektioner -->
+            <section class="post">
+                <div class="post-info">
+                    <h3><?= $post['name']; ?> <span class="priority">- Prio <?= $post['priority']; ?></span></h3>
+                    <p><?= $post['description']; ?></p>
+                </div>
+                <div class="actions">
+                    <a href="edit.php?id=<?= $post['id']; ?>" class="edit-btn">Ändra<i class="fas fa-edit"></i></a>
+                    <a href="bucketlist.php?deleteid=<?= $post['id']; ?>" class="delete-btn">Radera<i class="fas fa-trash-alt"></i></a>
+                </div>
+            </section>
+            <?php
+            }
+            ?>
+        </div>
+
+<!-- Inkludera footer -->  
 <?php include 'includes/footer.php'; ?>
