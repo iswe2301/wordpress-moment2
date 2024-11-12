@@ -91,7 +91,7 @@
         </label>
         <select id="priority" name="priority">
             <!-- Förvald option som inte går att välja igen -->
-            <option value="" selected disabled>Välj prioritet...</option>
+            <option value="" <?= empty($priority) ? "selected" : ''; ?> disabled>Välj prioritet</option>
             <!-- Sätt prioritet som selected om det är valt -->
             <option value="1" <?= $priority == 1 ? "selected" : ''; ?>>1</option>
             <option value="2" <?= $priority == 2 ? "selected" : ''; ?>>2</option>
