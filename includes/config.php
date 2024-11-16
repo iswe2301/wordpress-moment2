@@ -5,7 +5,7 @@ session_start();
 }
 
 // Kontrollera utvecklingsläge
-$devMode = true;
+$devMode = false;
 
 if ($devMode) {
 // Aktivera felmeddelanden
@@ -26,4 +26,8 @@ if($devMode) {
     if(!defined('DBDATABASE')) define('DBDATABASE', 'bucketdb');
 } else {
     // Publicerade databasinställningar
+    if(!defined('DBHOST')) define('DBHOST', 'localhost');
+    if(!defined('DBUSER')) define('DBUSER', 's116499_bucketdb');
+    if(!defined('DBPASS')) define('DBPASS', 'AWL5KpHUQEECFRrDF9a3');
+    if(!defined('DBDATABASE')) define('DBDATABASE', 's116499_bucketdb');
 }
