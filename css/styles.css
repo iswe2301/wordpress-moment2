@@ -23,7 +23,7 @@ main {
     max-width: 1200px;
     min-height: 100vh;
     height: 100%;
-    margin: 100px auto 20px auto;
+    margin: 100px auto 50px auto;
     padding: 20px;
 }
 
@@ -36,11 +36,11 @@ main {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    margin: 1rem 0 0.5rem 0;
+    margin: 2rem 0 1rem 0;
 }
 
 p {
-    margin: 0.5rem 0;
+    margin: 1rem 0;
     line-height: 1.5;
 }
 
@@ -363,7 +363,8 @@ button:hover {
 @media (max-width: 768px) {
 
     main {
-        margin: 100px 5px 20px 5px;
+        margin: 80px 10px 30px 10px;
+        padding: 10px;
     }
 
     header h1 {
