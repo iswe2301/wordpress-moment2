@@ -1,4 +1,4 @@
-# DT209G Webbutveckling för WordPress, Moment 1
+# DT209G Webbutveckling för WordPress, Moment 2
 
 ## Projektbeskrivning - MYBUCKETLiST
 **MyBucketList** är ett PHP-projekt där användare kan skapa, visa, redigera och ta bort poster i sin egen bucketlist. Projektet är utvecklat som en uppgift i kursen Webbutveckling för WordPress, med fokus på att lära sig utveckling med PHP.
